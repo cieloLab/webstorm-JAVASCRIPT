@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-案例2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin: 100px auto;
+
+            width: 800px;
+            height: 800px;
+        }
+        #img{
+            width: 500px;
+        }
+        ul li{
+            float: left;
+            list-style: none;
+            margin-right: 30px;
+
+        }
+        ul img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p id="title">the first</p>
+    <img id="img" src="03.jpg" alt="the first">
+    <ul id="ul">
+        <li><a href="03.jpg"><img src="03.jpg" alt="the first"></a></li>
+        <li><a href="04.jpg"><img src="04.jpg" alt="the second"></a></li>
+        <li><a href="09.jpg"><img src="09.jpg" alt="the third"></a></li>
+    </ul>
+    <script>
+        window.onload=function () {
+            var title=document.getElementById("title");
+            var img=document.getElementById("img");
+            var srcs=ul.getElementsByTagName("img");
+
+            for (var i=0;i<srcs.length;i++){
+                srcs[i].onclick=function () {
+                    title.innerText=this.getAttribute("alt");
+                    img.setAttribute("src",this.getAttribute("src"));
+                    return false;   //这里为了解除a标签点击显示herf中的图片
+                }
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

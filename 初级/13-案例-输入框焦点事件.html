@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-案例-输入框焦点事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #input{
+            width: 200px;
+            height: 40px;
+            font-size: 10px;
+            background-color: #fff;
+            margin: 100px 100px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="input" placeholder="输入文本">
+<script>
+    var input=document.getElementById("input");
+    input.onfocus=function () {
+        this.style.transform="scale(1.5)";
+        this.style.fontSize="15px";
+        this.style.fontFamily="华文中宋";
+        this.style.backgroundColor="red";
+        this.style.textAlign="center";
+    }
+    input.onblur=function () {
+        this.style.transform="scale(1)";
+        this.style.fontSize="10px";
+        this.style.fontFamily="华文中宋";
+        this.style.backgroundColor="white";
+    }
+</script>
+</body>
+</html>

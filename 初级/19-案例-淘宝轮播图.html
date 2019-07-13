@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-案例-淘宝轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box{
+            width: 322px;
+            height: 250px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+
+            border: 1px solid #000;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .left{
+            width: 60px;
+            height: 250px;
+            float: left;
+
+        }
+        .right{
+            width: 60px;
+            height: 250px;
+            float: left;
+        }
+        .center{
+            width: 200px;
+            height: 250px;
+            float: left;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+            overflow: hidden;
+        }
+        ul>li{
+            text-align: center;
+            height: 27px;
+            border-bottom: 1px solid #000;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul class="left">
+        <li class="current"><a href="#">美食1</a></li>
+        <li><a href="#">美食2</a></li>
+        <li><a href="#">美食3</a></li>
+        <li><a href="#">美食4</a></li>
+        <li><a href="#">美食5</a></li>
+        <li><a href="#">美食6</a></li>
+        <li><a href="#">美食7</a></li>
+        <li><a href="#">美食8</a></li>
+        <li><a href="#">美食9</a></li>
+    </ul>
+    <div class="center">
+        <a href="#"><img src="things/img1.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img2.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img3.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img4.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img5.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img6.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img7.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img8.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img9.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img10.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img11.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img12.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img14.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img15.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img16.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img17.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img18.jpg" width="200" height="250"></a>
+        <a href="#"><img src="things/img19.jpg" width="200" height="250"></a>
+    </div>
+    <ul class="right">
+        <li><a href="#">美食10</a></li>
+        <li><a href="#">美食11</a></li>
+        <li><a href="#">美食12</a></li>
+        <li><a href="#">美食13</a></li>
+        <li><a href="#">美食14</a></li>
+        <li><a href="#">美食15</a></li>
+        <li><a href="#">美食16</a></li>
+        <li><a href="#">美食17</a></li>
+        <li><a href="#">美食18</a></li>
+    </ul>
+</div>
+<script>
+    window.onload=function () {
+
+        var text=document.getElementsByTagName("li");
+        var img=document.getElementsByTagName("img");
+        var timer=null,num=0;
+        // clearInterval(timer);
+        timer=setInterval(function () {
+
+            num++;
+            num==18?num=0:num=num;
+            for(var i=0;i<text.length;i++){
+                text[i].className="";
+                img[i].style.display="none";
+            }
+            text[num].className="current";
+            img[num].style.display='inline-block';
+        },1000)
+    }
+</script>
+</body>
+</html>

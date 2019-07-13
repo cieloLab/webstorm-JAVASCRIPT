@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-案例6-输入框</title>
+    <style>
+        div{
+            margin: 100px auto;
+            width: 600px;
+            height: 200px;
+            padding-top: 20px;
+            text-align: center;
+            border: 1px solid black;
+            box-shadow: 1px 1px black;
+            /*---------------------outline: ;*/
+        }
+        #span{
+            font-size: 18px;
+        }
+        #input{
+            width: 200px;
+            padding-left: 10px;
+            transition: all 1s;
+            font-size: 12px;
+        }
+        #label{
+            font-size: 12px;
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span id="span">请输入成绩:</span>
+    <input id="input" type="text" placeholder="请输入1-100之间的成绩">
+    <label id="label" for="">输入成绩</label>
+</div>
+<script>
+    window.onload=function () {
+        var input=$("input");
+        var label=$("label");
+
+        input.onfocus=function () {
+            normal();
+        }
+        input.onblur=function () {
+            var value=input.value;
+            var a=(!isNaN(value))&&parseFloat(value);
+            a?is_num(value):not_num("请输入一个数字！");
+            input.style.width="200px";
+        }
+        function not_num(msg) {
+            label.style.color="red";
+            label.style.fontSize="15px";
+            label.innerText=msg;
+            input.color="red";
+        }
+        function is_num(value) {
+            if(value>=0&&value<=100){
+                label.style.color="lightblue";
+                label.style.fontSize="12px";
+                label.innerText="输入正确";
+            }else{
+                not_num("请输入1-100之间的数字")
+            }
+        }
+        function normal() {
+            input.style.fontSize="15px";
+            input.style.width="300px";
+            label.innerText="请输入数字";
+        }
+    }
+    function $(id) {
+        return typeof id =="string"?document.getElementById(id):null;
+    }
+</script>
+</body>
+</html>

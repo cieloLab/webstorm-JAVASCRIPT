@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        img{
+            vertical-align: top;//----------对齐
+        }
+        #box{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        #close{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            top: 2px;
+            right: 2px;
+            /*background-color: red;*/
+            cursor: pointer;
+        }
+    </style>
+    <script src="../014-音乐导航/js/myFunc.js"></script>
+</head>
+<body>
+<div id="box">
+    <div id="top">
+        <span id="close"></span>
+        <img src="images/top.jpg" alt="">
+    </div>
+    <div id="bottom">
+        <img src="images/bottom.jpg" alt="">
+    </div>
+</div>
+
+<script>
+    window.onload=function () {
+        $("close").onclick=function () {
+            buffer($("bottom"),{"height":0},function () {
+                buffer($("box"),{"width":0},function () {
+                    $("close").style.display="none";
+                });
+            });
+        }
+    }
+
+</script>
+</body>
+</html>

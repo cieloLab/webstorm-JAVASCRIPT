@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-案例3-伸缩布局（CSS3）</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background: url("03.jpg");
+        }
+        #div{
+            background-color: rgba(255,255,255,0.5);
+        }
+        #div #ul{
+            /*伸缩布局*/
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #div #ul li img{
+            width: 180px;
+            height: 180px;
+        }
+        #div #ul li img:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <ul id="ul">
+        <li><img src="03.jpg" alt=""></li>
+        <li><img src="04.jpg" alt=""></li>
+        <li><img src="09.jpg" alt=""></li>
+    </ul>
+</div>
+<script>
+    window.onload=function () {
+        var box=document.getElementById("div");
+        var img=box.getElementsByTagName("img");
+        for(var i=0;i<img.length;i++){
+            var temper=img[i];
+            temper.index=i+1;
+            temper.onclick=function () {
+                // ------------------------------------------------同步和异步
+                // document.body.style.background='url('+temper.getAttribute("src")+')';
+                document.body.style.background='url('+this.index+')';//这里设想图片按照顺序命名
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

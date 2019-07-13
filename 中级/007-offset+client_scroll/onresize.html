@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="封装方法-获取屏幕宽高.js"></script>
+</head>
+<body>
+<script>
+    changeColor();
+    window.onresize=changeColor;
+    function changeColor() {
+        var sc_size=screen().width;
+        if(sc_size>=960){
+            document.body.style.backgroundColor="red";
+        }else if(sc_size<=660&&sc_size>=360){
+            document.body.style.backgroundColor="blue";
+        }else if(sc_size<=360){
+            document.body.style.backgroundColor="orange";
+        }
+    }
+</script>
+</body>
+</html>

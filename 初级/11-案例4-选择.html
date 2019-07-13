@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-案例4-选择</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #panel{
+            width: 400px;
+            height: 300px;
+            box-shadow: 0 0 10px black;
+            margin: 100px auto;
+            padding: 20px;
+        }
+        #panel-header{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        #panel-content{
+            margin-bottom: 10px;
+        }
+        #panel-footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="panel">
+    <section id="panel-header">
+        <!----------------------------section相当于分段-->
+        <h2>选择歌曲</h2>
+        <hr>
+    </section>
+    <section id="panel-content">
+        <input type="checkbox">1212<br>
+        <input type="checkbox">1211<br>
+        <input type="checkbox">1212<br>
+        <input type="checkbox">1212211<br>
+        <input type="checkbox">114321<br>
+        <input type="checkbox">125351<br>
+        <hr>
+    </section>
+    <section id="panel-footer">
+        <button id="button1">全选</button>
+        <button id="button2">取消选择</button>
+        <button id="button3">反选</button>
+    </section>
+</div>
+<script>
+    window.onload=function () {
+        var input=document.querySelectorAll("input");
+
+        function $(id) {
+            return typeof id =="string"? document.getElementById(id) : null;
+        }
+        $("button1").onclick = function () {
+            for (var i =0 ;i<input.length;i++){
+                // input[i].setAttribute("checked",true);
+                input[i].checked=true;
+            }
+        }
+        $("button2").onclick = function () {
+            for (var i =0 ;i<input.length;i++){
+                // input[i].setAttribute("checked",false);
+                input[i].checked=false;
+            }
+        }
+        $("button3").onclick = function () {
+            for (var i =0 ;i<input.length;i++){
+                input[i].checked=!input[i].checked;
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

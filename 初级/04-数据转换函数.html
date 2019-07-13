@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-数据转换函数</title>
+</head>
+<body>
+<script type="text/html">
+    //toString()
+    var num = 123;
+    var num2=num.toString();
+    console.log(num2);
+    console.log( typeof num2);
+
+    //Number()
+    var str1='123';
+    var str2='a123asd';
+
+    console.log(Number(str1));//纯数字转换为number类型
+    console.log(typeof Number(str1));
+    console.log(Number(str2));//混合转换为Nan类型
+    console.log(typeof Number(str2));
+
+
+</script>
+<script>
+    var str2='a123as';
+    var str1='123as';
+    var str0='123.12as';
+    //parseInt()提取字符串中的整数,parseFloat()提取字符串中的小数   ;
+    //如果字符串的第一个字符不能被转换为数字，那么 parseFloat() 会返回 NaN。
+    console.log('\n');
+    console.log(parseInt(str2));
+    console.log(parseInt(str1));
+    console.log(parseFloat(str0));
+
+    //isNaN()判断是否是纯数字
+
+
+    true&& alert("如果成立，输出该语句")
+</script>
+</body>
+</html>

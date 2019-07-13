@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-输出方式</title>
+</head>
+<body>
+<!--
+type属性为text/html的时候，
+1、<script>片断中定义一个被JS调用的代码，代码不会在页面上显示
+2、这种写法，在页面渲染的时候，浏览器不会读取script标签中的html代码
+
+-->
+<script type="text/html">/*网页弹出弹框*/
+    alert('asd');
+</script>
+<script type="text/html">
+    console.log('我是向控制台输出，相当于print');
+    console.warn('我是输出警告');
+    console.error('我是输出错误');
+</script>
+<script>
+    prompt('我是网页弹出输入框');
+</script>
+</body>
+</html>

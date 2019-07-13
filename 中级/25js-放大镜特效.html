@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25js-放大镜特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 350px;
+            height: 350px;
+            margin: 100px 0 0 100px;
+            border: 1px solid #000;
+
+            position: relative;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+        }
+        #move{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,0,.4);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+        #big-box{
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #fff;
+
+            border: 1px solid #000;
+            top: 0;
+            left: 360px;
+            display: none;
+        }
+        #list{
+            width: 180px;
+            height: 50px;
+            margin: 10px 0 0 100px;
+        }
+        #list li{
+            margin-right: 3px;
+            border: 1px solid #000;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="small-box">
+        <img src="pic001.jpg" alt="">
+        <span id="move"></span>
+        <!--
+        效果闪动的原因在于奖span放在small的外面？？？？？？？？？？？？
+
+        -->
+    </div>
+
+    <div id="big-box" style="overflow: hidden;">
+        <img src="pic01.jpg" alt="" style="position: absolute;top:0;left:0" >
+    </div>
+</div>
+<div id="list">
+    <ul>
+        <li><img src="pic0001.jpg" alt=""></li>
+        <li><img src="pic0002.jpg" alt=""></li>
+        <li><img src="pic0003.jpg" alt=""></li>
+    </ul>
+</div>
+<script>
+    window.onload=function () {
+        var box=document.getElementById("box");
+        var small=document.getElementById("small-box");
+        var small_img=small.children[0];
+        var move=document.getElementById("move");
+        var big=document.getElementById("big-box");
+        var big_img=big.children[0];
+        var list=document.getElementById("list");
+        var list_img=list.getElementsByTagName("img");
+
+        small.onmouseover=function () {
+            move.style.display="block";
+            big.style.display="block";
+
+            small.onmousemove=function (event) {
+                var event=event||window.event;
+
+                var mouseX=event.clientX;
+                var mouseY=event.clientY;
+                // console.log(move.offsetLeft);
+                // var x=mouseX-box.offsetLeft-move.offsetLeft/2;
+                var x=mouseX-150;
+                // var y=mouseY-box.offsetTop-move.offsetHeight/2;
+                var y=mouseY-150;
+
+                // x<0? x=0:null;
+                // x>350?x=250:null;
+                // y<0? y=0:null;
+                // y>350?y=250:null;
+                if(x<0)x=0;
+                if(x>250)x=250;
+                if(y<0)y=0;
+                if(y>250)y=250;
+                move.style.top=y+"px";
+                move.style.left=x+"px";
+
+                // smallX / bigX = smallBox.width / 大图的宽度
+                // bigX = smallX / ( smallBox.width / 大图的宽度 )
+
+                var bigX=x/(80/35);
+                var bigY=y/(80/35);
+                // var bigY=60/35*y;
+
+                big_img.style.left=-bigX+"px";
+                big_img.style.top=-bigY+"px";
+            // as-----------------------d这里的img需要有定位
+            }
+        }
+        small.onmouseout=function () {
+            move.style.display="none";
+            big.style.display="none";
+        }
+        for(var i=0;i<list_img.length;i++){
+            (function (i) {
+                var tem=list_img[i];
+                tem.onmouseover=function () {
+                    small_img.src="pic00"+(i+1)+".jpg";
+                    big_img.src="pic0"+(i+1)+".jpg";
+                }
+            })(i);
+        }
+    }
+</script>
+</body>
+</html>

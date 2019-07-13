@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18-一次定时器</title>
+</head>
+<body>
+<button id="btn1">3 second</button>
+<button id="btn2"> stop</button>
+<script>
+    window.onload=function () {
+        var btn1=document.getElementById("btn1");
+        var btn2=document.getElementById("btn2");
+        var timer=null;
+        btn1.onclick=function () {
+            clearTimeout(timer);
+            timer=setTimeout(function () {
+                alert("3 second already");
+            },3000);
+        }
+        btn2.onclick=function () {
+            clearTimeout(timer);
+        }
+    }
+</script>
+</body>
+</html>

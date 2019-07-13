@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-案例5-动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: red;
+            transition: all 1s;
+
+        }
+    </style>
+</head>
+<body>
+<button id="btn">Change</button>
+<button id="btn2">Reverse-Change</button>
+<button id="btn3">Return-Normal</button>
+<div id="box"></div>
+<script>
+    window.onload=function () {
+        var index=0;
+        $("btn").onclick=function () {
+            index ++;
+            $("box").style.transform="translate("+(index*100)+"px) rotate("+(index*30)+"deg) scale("+(index*1.3)+")"
+        }
+        $("btn2").onclick=function () {
+            // index>0 ? index --:null;
+            $("box").style.transform="translate(-100px) rotate(-30deg) scale(-1.3)";
+        }
+        $("btn3").onclick=function () {
+            $("box").style.width="100px";
+
+        }
+
+    }
+    function $(id) {
+        return typeof id =="string"? document.getElementById(id):null;
+    }
+</script>
+</body>
+</html>

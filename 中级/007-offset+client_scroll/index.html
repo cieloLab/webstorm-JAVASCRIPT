@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 2px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var box=document.getElementsByClassName("div")[0];
+    ///-------width and Height
+
+    //border+padding+content
+    console.log(box.offsetWidth,box.offsetHeight);
+    //可视区域的宽高（padding+content）
+    console.log(box.clientWidth,box.clientHeight);
+    //可以滚动的宽高
+    console.log(box.scrollWidth,box.scrollHeight);
+
+
+    ///-------top and left
+
+    //border+padding+content
+    console.log(box.offsetTop,box.offsetLeft);
+    //边框的宽高
+    console.log(box.clientTop,box.clientLeft);
+    //
+    console.log(box.offsetTop,box.offsetLeft);
+
+</script>
+</body>
+</html>

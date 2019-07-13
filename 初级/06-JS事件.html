@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-JS事件</title>
+    <script>
+        window.onload=function () {
+            var a1=document.getElementById("btn");
+
+            a1.onclick=function () {
+                alert("12")
+            }
+        }//用于加载所有标签完成后的事件
+
+    </script>
+</head>
+<body>
+<button id="btn" name="34" class="56">asd</button>
+<span class="sp">asdads</span>
+<script type="text/html">
+    // 1.选取事件源，（添加事件监听）
+    var a1=document.getElementById("btn");//根据ID选择器选取
+    var a2= document.getElementsByTagName("button")[0];//根据标签名选取,由于不像ID选择器只会有一个，返回的是数组
+    var a3=document.getElementsByClassName("56")[0];//根据类名选择器选取，由于不像ID选择器只会有一个，返回的是数组
+    var a4=document.querySelector("#btn")//根据特定选择器选取,返回第一个找到的
+    var a5=document.querySelectorAll(".sp");//根据特定选择器选取,返回全部
+    console.log(a1);
+    console.log(a2);
+    console.log(a3);
+    console.log(a4);
+    console.log(a5);
+</script>
+<script type="text/html">
+
+    var a1=document.getElementById("btn");
+
+    a1.onclick=function () {
+    console.log("12")
+    }
+
+
+</script>
+</body>
+</html>

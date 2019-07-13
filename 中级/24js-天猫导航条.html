@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24js-天猫导航条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+        body{
+            background-color: pink;
+        }
+        #nav{
+            width: 900px;
+            height: 63px;
+            background: url("doubleOne.png") no-repeat right center #fff;
+            margin: 100px auto;
+            position: relative;
+            border-radius: 5px;
+
+        }
+        #nav ul{
+            position: relative;
+        }
+        #nav ul li{
+            float: left;
+            width: 88px;
+            height: 63px;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        #span{
+            position: absolute;
+            width: 88px;
+            height: 63px;
+            background: url("tMall.png") no-repeat;
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <span id="span"></span>
+    <ul id="tmao">
+        <li>双11狂欢</li>
+        <li>服装会场</li>
+        <li>数码家电</li>
+        <li>家具建材</li>
+        <li>母婴童装</li>
+        <li>手机会场</li>
+        <li>美妆会场</li>
+        <li>进口会场</li>
+        <li>飞猪旅行</li>
+
+    </ul>
+</nav>
+<script>
+
+    window.onload=function () {
+        var nav=$("nav");
+        var span=nav.children[0];
+        var ul=nav.children[1];
+        var li=ul.children;
+
+        var begin=0,end=0,beginX=0;
+        for(var i=0;i<li.length;i++){
+            var tem=li[i];
+
+            tem.onmouseover=function () {
+                end=this.offsetLeft;
+            }
+            tem.onmouseout=function () {
+                end=beginX;
+            }
+            tem.onmousedown=function () {
+                beginX=this.offsetLeft;
+            }
+        }
+        setInterval(function () { // <!----缓动动画：begin=begin+(end-begin)*缓动系数,由不断循环实现，课时135-->
+            begin=(begin+(end-begin)*0.2);
+            span.style.left=begin+"px";
+        },10);
+
+    }
+    function $(id) {
+        return typeof id === "string"?document.getElementById(id):null;
+    }
+</script>
+</body>
+</html>

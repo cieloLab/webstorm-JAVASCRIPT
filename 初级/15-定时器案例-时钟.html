@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        h2{
+            text-align: center;
+            width: 1000px;
+            height: 30px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: red;
+        }
+        #clock{
+            width: 600px;
+            height: 600px;
+            background: url("./clock.jpg");
+            margin: 10px auto;
+            position: relative;
+        }
+        #hour{
+            width: 30px;
+            height: 600px;
+            background: url("./hour.png") no-repeat center center;
+            left: 50%;
+            margin-left: -15px;
+            position: absolute;
+        }
+        #minute{
+            width: 30px;
+            height: 600px;
+            background: url("./minute.png") no-repeat center center;
+            left: 50%;
+            margin-left: -15px;/*由50%设置需要*/
+            position: absolute;
+        }
+        #second{
+            width: 30px;
+            height: 600px;
+            background: url("./second.png") no-repeat center center;
+            left: 50%;
+            margin-left: -15px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<h2 id="lab"></h2>
+<div id="clock">
+
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+</div>
+<script>
+    window.onload=function () {
+        var hour=document.getElementById("hour");
+        var minute=document.getElementById("minute");
+        var second=document.getElementById("second");
+        var lab=document.getElementById("lab");
+        setInterval(function () {
+            var date=new Date();
+            var ms=date.getMilliseconds();
+
+            var s=date.getSeconds() ;
+            var m=date.getMinutes() + (s+ms/1000)/60;
+            var h=date.getHours()%12 + m/60;/*取余12是为了12小时制*/
+            lab.innerHTML="现在是"+date.getHours()+"点"+date.getMinutes()+"分"+date.getSeconds()+"秒";
+
+            hour.style.transform="rotate("+h*30+"deg)";
+            minute.style.transform="rotate("+m*6+"deg)";
+            second.style.transform="rotate("+s*6+"deg)";
+        },1000);
+
+    }
+</script>
+</body>
+</html>

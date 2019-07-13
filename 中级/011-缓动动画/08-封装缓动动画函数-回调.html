@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+   <button id="btn">往右走</button>
+   <button id="btn1">往左走</button>
+   <div id="box"></div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+
+        // 0. 变量
+        var box = $("box");
+
+        // 1. 监听按钮的点击
+        $("btn").onclick = function () {
+            buffer(box, {"left": 800, "top": 120, "width": 230, "height": 400}, function () {
+                buffer(box, {"left": 100, "top": 100, "width": 50, "height": 200}, function () {
+                    buffer(box, {"left": 500, "top": 400, "width": 250, "backgroundColor": "yellow"});
+                });
+            });
+        };
+
+        $("btn1").onclick = function () {
+            buffer(box, {"left": 100, "top": 100, "width": 50, "height": 200});
+        };
+    };
+
+    function buffer(obj, json, fn) {
+        // 1.1 清除定时器
+        clearInterval(obj.timer);
+
+        // 1.2 设置定时器
+        var begin = 0, target = 0, speed = 0;
+        obj.timer = setInterval(function () {
+             // 1.3.0 旗帜
+             var flag = true;
+             for(var k in json){
+                 // 1.3 获取初始值
+                 begin = parseInt(getCSSAttrValue(obj, k)) || 0;
+                 target = parseInt(json[k]);
+
+                 // 1.4 求出步长
+                 speed = (target - begin) * 0.2;
+
+                 // 1.5 判断是否向上取整
+                 speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+
+                 // 1.6 动起来
+                 obj.style[k] = begin + speed + "px";
+
+                 // 1.5 判断
+                 if(begin !== target){
+                    flag = false;
+                 }
+             }
+
+             // 1.3 清除定时器
+            if(flag){
+                 clearInterval(obj.timer);
+
+                console.log(fn);
+
+                // 判断有没有回调函数
+                if(fn){
+                    fn();
+                }
+            }
+        }, 20);
+    }
+</script>
+</body>
+</html>

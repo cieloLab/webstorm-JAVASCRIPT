@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        div{
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 150px;
+        }
+        img{
+            width: 100%;
+        }
+        p{
+            text-align: center;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+    </style>
+    <script src="../009-微博分享/myFun.js"></script>
+
+</head>
+<body>
+<div id="aside"><img src="images/float.jpg" alt=""></div>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<p>aaddawdaadada</p>
+<script>
+    window.onload=function () {
+
+
+        var end=0,begin=0,timer=null;
+        var top=$("aside").offsetTop;//这里不能在下面计时器里声明，offsettop定义？？
+        window.onscroll=function () {
+            clearInterval(timer);
+            var scroll_top=scroll().top;
+            end=scroll_top+top;
+
+            timer=setInterval(function () {
+                begin=begin+(end-begin)*0.2;
+                $("aside").style.top=begin+"px";
+
+
+                if(Math.round(begin)===end){
+
+                    clearInterval(timer);
+                }
+            },20)
+        }
+    }
+</script>
+</body>
+</html>

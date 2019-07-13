@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-滚动效果</title>
+    <!--子绝父相，用于此为了动图的效果-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 750px;
+            height: 400px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #top{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            /*background-color: red;*/
+            cursor: pointer;
+        }
+        #pic{
+            width: 750px;
+            top: 0;
+            position: absolute;
+        }
+        #bottom{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            /*background-color: green;*/
+            cursor: alias;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img id="pic" src="./long-pic.jpg" alt="" >
+    <span id="top"></span>
+    <span id="bottom"></span>
+</div>
+<script>
+    window.onload=function () {
+        var pic=document.getElementById("pic");
+        var top=document.getElementById("top");
+        var bot=document.getElementById("bottom");
+        var timer=null,num=0;
+
+        top.onmouseover=function () {
+            clearInterval(timer);
+                timer=setInterval(function () {
+                    num>=-2466?num -=5:null ;
+                    pic.style.top=num+"px";
+                },20);
+        }
+        bot.onmouseover=function () {
+            clearInterval(timer);
+                timer=setInterval(function () {
+                    num<=0?num +=5:null ;
+                    pic.style.top=num+"px";
+                },20);
+        }
+        top.onmouseleave=function () {
+            clearInterval(timer);
+        }
+        bot.onmouseleave=function () {
+            clearInterval(timer);
+        }
+    }
+</script>
+</body>
+</html>

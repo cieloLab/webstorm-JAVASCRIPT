@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            width: 100px;
+            height: 80px;
+        }
+        body{
+            width: 100%;
+            height: 3000px;
+        }
+        #round{
+            position: absolute;
+            background-color: #000000;
+            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #center{
+            background-color: skyblue;
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            margin-left: -150px;
+            margin-top:  -150px;
+            display: none;
+
+        }
+    </style>
+    <script src="../009-微博分享/myFun.js"></script>
+
+</head>
+<body>
+<button id="but">click</button>
+<div id="round"></div>
+<div id="center"></div>
+
+<script>
+    window.onload=function () {
+        $("but").onclick=function (event) {
+            // 1.0 阻止冒泡
+
+            if(event && event.stopPropagation){
+                event.stopPropagation();
+            }else {
+                window.event.cancelBubble = true;
+            }
+
+            $("round").style.display="block";
+            $("center").style.display="block";
+
+            document.body.style.overflow="hidden";
+        }
+        document.onclick=function (event) {
+            var e=event||window.event;
+
+            // 2.1 获取点击的标签
+            var targetId = e.target ? e.target.id : e.srcElement.id;
+
+            if(targetId==="round"){
+                $("round").style.display="none";
+                $("center").style.display="none";
+                document.body.style.overflow="auto";
+            }else {
+                window.location.href = "http://www.baidu.com";
+            }
+
+
+        }
+    }
+</script>
+</body>
+</html>

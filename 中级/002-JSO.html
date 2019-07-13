@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>002-JSON</title>
+    <style>
+        body{
+            height: 3000px;
+            width: 3000px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /**
+     * 获取不同浏览器下scrolltop的方法
+     * scroll.top scroll.left
+     */
+    function scroll(){//最新的浏览器
+        if(window.pageXOffset !==null){
+            return{
+                top:window.pageXOffset,
+                left:window.pageYOffset
+            }
+        }else if(document.compatMode ==="CSS1Compat"){//满足  W3C标准的浏览器
+            return{
+                top:document.documentElement.scrollTop,
+                left:document.documentElement.scrollLeft
+            }
+        }else{//老式
+            return{
+                top :document.body.scrollTop,
+                left :document.body.scrollLeft
+            }
+        }
+    }
+    window.onscroll=function () {
+
+        console.log( scroll().top ,scroll().left);
+    }
+</script>
+</body>
+</html>

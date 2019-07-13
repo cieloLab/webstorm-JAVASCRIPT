@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li {
+            background-color: #ccc;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="current"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    /*var allLis = document.getElementsByTagName("li");
+    for (var i = 0; i < allLis.length; i++) {
+        allLis[i].onmouseover = function () {
+            for(var j=0; j<allLis.length; j++){
+                 allLis[j].className = "";
+            }
+            this.className = "current";
+        }
+    }*/
+
+    var allLis = document.getElementsByTagName("li");
+    var lastOne = 0;
+    for (var i = 0; i < allLis.length; i++) {
+        (function (index) {
+            allLis[index].onmouseover = function () {
+                // 清除
+                allLis[lastOne].className = "";
+                // 设置
+                this.className = "current";
+                // 赋值
+                lastOne = index;
+            }
+        })(i);
+    }
+</script>
+</body>
+</html>

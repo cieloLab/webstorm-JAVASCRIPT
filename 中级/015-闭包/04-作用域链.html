@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+<script type="text/html">
+     var num = 3;
+     (function () {
+         (function () {
+             (function () {
+                 var num = 2;
+                 age.log(age);
+                 (function () {
+                     var age = 18;
+                     console.log(num);
+                 })();
+             })();
+         })();
+     })();
+</script>
+<script>
+    (function () {
+        var btn = document.getElementById("btn");
+        var btn1 = document.getElementById("btn");
+        var btn2 = document.getElementById("btn");
+        var btn3 = document.getElementById("btn");
+        var btn4 = document.getElementById("btn");
+        btn.onclick = function () {
+            alert(0);
+        }
+    })();
+
+    (function () {
+        var d = document;
+        var btn = d.getElementById("btn");
+        var btn1 = d.getElementById("btn");
+        var btn2 = d.getElementById("btn");
+        var btn3 = d.getElementById("btn");
+        var btn4 = d.getElementById("btn");
+    })();
+
+    (function (document) {
+        var btn = document.getElementById("btn");
+        var btn1 = document.getElementById("btn");
+        var btn2 = document.getElementById("btn");
+        var btn3 = document.getElementById("btn");
+        var btn4 = document.getElementById("btn");
+    })(document);
+
+    /*var num = 0;
+    for(var k in window){
+        num++;
+        document.write(k + "," + num + "<br/>")
+    }*/
+</script>
+</body>
+</html>

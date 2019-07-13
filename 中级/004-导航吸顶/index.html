@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+        img{
+            vertical-align: center;
+            width: 100%;
+
+        }
+        section{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .nav{
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+    </style>
+    <script src="../009-微博分享/myFun.js"></script>
+</head>
+<body>
+<header id="top"><img src="images/top.png" alt=""></header>
+<nav id="nav"><img src="images/nav.png" alt=""></nav>
+<section id="body"><img src="images/body01.png" alt=""><img src="images/body02.png" alt=""></section>
+<script>
+    window.onload=function () {
+
+        var nav_top=$("nav").offsetTop;//---------why cannot put it down????
+        window.onscroll=function () {
+            var OutScreen=scroll().top;
+
+            if(OutScreen>=nav_top){
+                $("nav").className="nav";
+            }else{
+                $("nav").className="";
+            }
+        }
+    }
+</script>
+</body>
+</html>

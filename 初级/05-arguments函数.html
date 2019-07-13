@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-arguments函数</title>
+</head>
+<body>
+<script>
+    // JS对于形参与实参数目不一致不会报错
+    //普通写法  ctrl+alt+l===ctrl+a ctrl+i
+    function sum1(array) {
+        var sum = 0;
+        for (var i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        console.log(sum);
+    }
+
+    sum1([1, 2, 3, 213, 4, 7])
+
+    //arguments函数,用于接收传进来的所有值
+    function sum2() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        console.log(sum);
+    }
+
+    sum2(1, 2, 3, 213, 4, 7)
+</script>
+</body>
+</html>

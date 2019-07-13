@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>26js-进度条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+        #progress{
+            width: 1000px;
+            height: 35px;
+            /*background: #e8e8e8;*/
+            margin: 100px auto;
+            position: relative;
+
+            border-radius: 8px;
+        }
+        #progress-bar{
+            width: 900px;
+            height: 100%;
+            background: #e8e8e8;
+            border-radius: 8px;
+            position: relative;
+        }
+        #progress_head{
+            width: 0px;
+            height: 100%;
+            background: red;
+            /*position: absolute;*/
+            border-bottom-left-radius: 8px;
+            border-top-left-radius: 8px;
+        }
+        #progress_value{
+            position: absolute;
+            top: 7px;
+            right: 10px;
+        }
+        span{
+            width: 25px;
+            height: 49px;
+            background: red;
+            top: -7px;
+            left: 0px;
+            position: absolute;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="progress">
+    <div id="progress-bar">
+        <div id="progress_head"></div>
+        <span></span>
+    </div>
+    <div id="progress_value">0%</div>
+</div>
+<script>
+    window.onload=function () {
+        var progress=document.getElementById("progress");
+        var progress_bar=progress.children[0];
+        var progress_head=progress_bar.children[0];
+        var span=progress_bar.children[1];
+        var progress_value=progress.children[1];
+
+        span.onmousedown=function (event) {
+            var e=e||window.event;
+            //起始位置
+            var start_x=e.clientX-span.offsetLeft;
+
+            document.onmousemove=function (event) {
+                var e=e||window.event;
+                //移动的现在位置
+                var x=e.clientX-start_x;
+                if(x<=0){
+                    x=0;
+                }else if(x>=progress_bar.offsetWidth-span.offsetWidth){
+                    x=progress_bar.offsetWidth-span.offsetWidth;
+                }
+                span.style.left=x+"px";
+                progress_head.style.width=x+'px';
+
+                progress_value.innerHTML=parseInt(x/(progress_bar.offsetWidth-span.offsetWidth)*100)+"%";
+
+                return false;//这里很重要，为了区分那个结束
+            }
+            document.onmouseup=function () {
+                document.onmousemove=null;
+            }
+        }
+    }
+</script>
+</body>
+</html>

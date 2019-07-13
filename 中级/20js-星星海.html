@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20js-星星海</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: #000;
+        }
+        span{
+            width: 30px;
+            height: 30px;
+            background: url("star.png") no-repeat;
+            position: absolute;
+            background-size: 100% 100%;
+            animation: flash 1s alternate infinite;
+            transition: all 1s;
+        }
+        @keyframes flash {
+            0%{opacity: 0;}
+            100%{opacity: 1;}
+        }
+        span:hover{
+            transform: rotate(180deg) scale(2,2) !important;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    window.onload=function () {
+        var screenX=document.documentElement.clientWidth;
+        var screenY=document.documentElement.clientHeight;
+        for(var i=0;i<150;i++){
+            var span=document.createElement("span");
+            document.body.appendChild(span);
+
+            var x=parseInt(Math.random()*screenX);
+            var y=parseInt(Math.random()*screenY);
+
+            span.style.left=x+"px";
+            span.style.top=y+"px";
+
+            var time1=Math.random()*1.5;
+            var time2=Math.random()*1.5;
+            span.style.transform="scale("+time1+","+time1+")";
+            span.style.animationDelay=time2+"s";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: #cccccc;
+        }
+        p{
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        span{
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+            width: 43px;
+            height: 43px;
+            background: url("images/top.png") no-repeat;
+            background-size: 100% 100%;
+            display: none;
+        }
+    </style>
+    <script src="../009-微博分享/myFun.js"></script>
+    <script>
+        window.onload=function () {
+            var scroll_top,begin=0,end=0,timer=null;
+
+            window.onscroll=function () {
+                scroll_top=scroll().top;
+                scroll_top>0? show($("back")):hide($("back"));
+
+                begin=scroll_top;
+
+            }
+
+            $("back").onclick=function () {
+                clearInterval(timer);
+
+                timer=setInterval(function () {
+                    begin=begin+(end-begin)*0.2;
+                    console.log(begin);
+                    window.scrollTo(0,begin);
+
+                    if(Math.round(begin)===end){
+                        clearInterval(timer);
+                    }
+                },20);
+            }
+        }
+    </script>
+</head>
+<body>
+<span id="back"></span>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+<p>sadasdsads</p>
+</body>
+</html>

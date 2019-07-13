@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>001-橱窗特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+        #box{
+            width: 1000px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #box_top{
+            position: absolute;
+            top: 20px;
+            width: 2080px;
+            height: 100%;
+            left: 0;
+        }
+        #box_top li{
+            float: left;
+
+        }
+        #box_bottom{
+            width: 100%;
+            height: 25px;
+            position: absolute;
+            background-color: #e8e8e8;
+            bottom: 0;
+            left: 0;
+        }
+        .span{
+            position: absolute;
+            background-color: orange;
+            height: 100%;
+            width: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="box_top">
+        <li><img src="img1.jpg" alt=""></li>
+        <li><img src="img2.jpg" alt=""></li>
+        <li><img src="img3.jpg" alt=""></li>
+        <li><img src="img4.jpg" alt=""></li>
+        <li><img src="img5.jpg" alt=""></li>
+        <li><img src="img6.jpg" alt=""></li>
+        <li><img src="img7.jpg" alt=""></li>
+        <li><img src="img8.jpg" alt=""></li>
+        <li><img src="img1.jpg" alt=""></li>
+        <li><img src="img2.jpg" alt=""></li>
+        <li><img src="img3.jpg" alt=""></li>
+        <li><img src="img4.jpg" alt=""></li>
+        <li><img src="img5.jpg" alt=""></li>
+        <li><img src="img6.jpg" alt=""></li>
+        <li><img src="img7.jpg" alt=""></li>
+        <li><img src="img8.jpg" alt=""></li>
+    </ul>
+    <div id="box_bottom">
+        <span class="span"></span>
+    </div>
+</div>
+<script>
+    window.onload=function () {
+        var box=document.getElementById("box");
+        var box_top=document.getElementById("box_top");
+        // var box_bottom=document.getElementById("box_bottom");
+        var span=document.getElementsByClassName("span")[0];
+
+        //滚动条长度 = ( 盒子的宽度 / 内容的宽度) * 盒子的宽度
+        var span_length=(box.offsetWidth/box_top.offsetWidth) * box.offsetWidth;
+        span.style.width=span_length+"px";
+
+
+        span.onmousedown=function (event) {
+            var e=e||window.event;
+
+            var begin_x=e.clientX-span.offsetWidth;
+
+
+            span.onmousemove=function (event) {
+                var e=e||window.event;
+                var end_x=event.clientX-begin_x;
+                if(end_x<=0){
+                    end_x=0;
+                }else if(end_x>=box.offsetWidth-span.offsetWidth){
+                    end_x=box.offsetWidth-span.offsetWidth;
+                }
+                span.style.left=end_x+"px";
+                // 内容走的距离 = （内容的长度 - 盒子的长度） \/ (盒子长度 - 滚动条的长度) * 滚动条走的距离
+                var pho_left=(box_top.offsetWidth-box.offsetWidth)/(box.offsetWidth-span.offsetWidth)*end_x;
+                box_top.style.left=-pho_left+"px";
+            }
+            span.onmouseup=function () {
+                document.onmousemove=null;
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

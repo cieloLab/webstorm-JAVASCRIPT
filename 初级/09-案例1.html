@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-案例1</title>
+    <style>
+        div{
+            margin: 0 auto;
+            width: 400px;
+            height: 400px;
+        }
+        div img{
+            width: 200px;
+            height: 200px;
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button id="btn">隐藏</button>
+    <p></p>
+    <img id="img" src="04.jpg" alt=""></div>
+<script>
+    window.onload=function () {
+        var btn=document.getElementById("btn");
+        var img=document.getElementById("img");
+
+        btn.onclick=function () {
+            if(btn.innerText === "隐藏"){//innerText取中间内容，innerHtml取所有子元素
+                btn.innerText = "显示";
+                img.style.display = "none";
+            }else if(btn.innerText === "显示"){
+                btn.innerText="隐藏";
+                img.style.display="block";
+            }
+        }
+    }
+</script>
+</body>
+</html>

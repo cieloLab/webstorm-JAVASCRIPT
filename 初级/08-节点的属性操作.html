@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-节点的属性操作</title>
+    <style>
+        #div{
+            width: 400px;
+            height: 200px;
+            background-color: red;
+        }
+        .img{
+            width: 200px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <button class="btn">asd</button>
+    <span class="btn">asd</span>
+    <img src="04.jpg" alt="hhh" class="img">
+</div>
+<script>
+    window.onload=function () {
+
+        var img = document.getElementsByClassName("img")[0];
+        var cloned = img.cloneNode(false);//参数为布尔类型，如果克隆所有后代true,否则设置为 false。
+        console.log(cloned);
+        // console.log(new_child);
+        //节点属性的操作
+        //1.获取属性
+        console.log(cloned.getAttribute("src"));
+        //1.设置属性
+        cloned.setAttribute("src","03.jpg");//注意--------------如果属性不存在会自动添加上去
+        console.log(cloned.getAttribute("src"));
+        cloned.setAttribute("aaa","asdsad");
+        cloned.setAttribute("bbb","asdsad");
+        console.log(cloned.getAttribute("aaa"));
+        //1.移除属性
+        cloned.removeAttribute("bbb");
+        console.log(cloned.getAttribute("bbb"));
+    }
+</script>
+</body>
+</html>
